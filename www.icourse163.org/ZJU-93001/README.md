@@ -3,3 +3,5 @@
 1. [第一周编程作业](第一周编程作业)
   1. 01-复杂度1 最大子列和问题
     * [1.hs (Haskell)](第一周编程作业/1.hs)
+  1. 01-复杂度2 Maximum Subsequence Sum
+    * [2.hs (Haskell)](第一周编程作业/2.hs)
