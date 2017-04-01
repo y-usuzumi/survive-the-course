@@ -18,10 +18,13 @@
 1. [第三周编程作业](第三周编程作业)
    1. 03-树1 树的同构
       * [1.hs (Haskell)](第三周编程作业/1.hs)
-   2. 03-树2 List Leaves
+   1. 03-树2 List Leaves
       * [2.c](第三周编程作业/2.c)
-   3. 03-树3 Tree Traversals Again
+   1. 03-树3 Tree Traversals Again
       * [3.hs (Haskell)](第三周编程作业/3.hs)
 1. [第四周编程作业](第四周编程作业)
    1. 04-树4 是否同一棵二叉搜索树
       * [1.hs (Haskell)](第四周编程作业/1.hs)
+   1. 04-树5 Root of AVL Tree
+   1. 04-树6 Complete Binary Search Tree
+      * [1.hs (Haskell)](第四周编程作业/3.hs)
