@@ -27,4 +27,6 @@
       * [1.hs (Haskell)](第四周编程作业/1.hs)
    1. 04-树5 Root of AVL Tree
    1. 04-树6 Complete Binary Search Tree
-      * [1.hs (Haskell)](第四周编程作业/3.hs)
+      * [3.hs (Haskell)](第四周编程作业/3.hs)
+   1. 04-树7 二叉搜索树的操作集
+      * [4.c](第四周编程作业/4.c)
