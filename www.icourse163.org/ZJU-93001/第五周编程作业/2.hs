@@ -1,10 +1,12 @@
-{-# LANGUAGE BangPatterns #-}
-{-# LANGUAGE MagicHash    #-}
+{-# LANGUAGE BangPatterns      #-}
+{-# LANGUAGE OverloadedStrings #-}
 
 import           Control.Monad
 import           Data.Array
 import           Data.Array.IO
-import           GHC.Prim
+import qualified Data.ByteString       as BS
+import qualified Data.ByteString.Char8 as C8
+import           Data.Maybe
 import           Text.Printf
 
 type SetOfSets = IOUArray Int Int
@@ -49,19 +51,21 @@ stop !sos = do
 findRootCnt :: SetOfSets -> IO Int
 findRootCnt !sos = getElems sos >>= return . length . filter (< 0)
 
-data Command = Input {-# UNPACK #-} !Int {-# UNPACK #-} !Int
-             | Check {-# UNPACK #-} !Int {-# UNPACK #-} !Int
+data Command = Input !Int !Int
+             | Check !Int !Int
              | Stop
              deriving Eq
 
-resolveCommand :: String -> Command
+resolveCommand :: BS.ByteString -> Command
 resolveCommand !s = let
-   sects = words s
+   sects = C8.words s
    in
      case sects of
-       "I":a:b:_ -> Input (read a) (read b)
-       "C":a:b:_ -> Check (read a) (read b)
+       "I":a:b:_ -> Input (readI a) (readI b)
+       "C":a:b:_ -> Check (readI a) (readI b)
        "S":_     -> Stop
+   where
+     readI = fst . fromJust . C8.readInt
 
 main = do
   size <- readLn
@@ -69,7 +73,7 @@ main = do
   op sos
   where
     op sos = do
-      line <- getLine
+      line <- BS.getLine
       let cmd = resolveCommand line
       case cmd of
         Input l r -> union l r sos
