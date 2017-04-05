@@ -23,7 +23,7 @@
    1. 03-树3 Tree Traversals Again
       * [3.hs (Haskell)](第三周编程作业/3.hs)
 1. [第四周编程作业](第四周编程作业)
-1. 04-树4 是否同一棵二叉搜索树
+   1. 04-树4 是否同一棵二叉搜索树
       * [1.hs (Haskell)](第四周编程作业/1.hs)
    1. 04-树5 Root of AVL Tree
       * [2.hs (Haskell)](第四周编程作业/2.hs)
