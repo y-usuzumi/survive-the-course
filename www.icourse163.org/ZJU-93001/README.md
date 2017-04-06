@@ -36,3 +36,5 @@
       * [1.hs (Haskell)](第五周编程作业/1.hs)
    1. 05-树8 File Transfer
       * [2.hs (Haskell)](第五周编程作业/2.hs)
+   1. 05-树9 Huffman Codes
+      * [3.hs (Haskell)](第五周编程作业/3.hs)
