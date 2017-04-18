@@ -12,7 +12,7 @@
       * [2.hs (Haskell)](第二周编程作业/2.hs)
    1. 02-线性结构3 Reversing Linked List
       * [3.c (C) (18/25分)](第二周编程作业/3.c)
-      * [3.hs (Haskell) (19/25分)](第二周编程作业/3.hs)
+      * [3.hs (Haskell) (22/25分)](第二周编程作业/3.hs)
    1. 02-线性结构4 Pop Sequence
       * [4.py (Python 3)](第二周编程作业/4.py)
 1. [第三周编程作业](第三周编程作业)

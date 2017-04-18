@@ -1,44 +1,109 @@
-import Control.Monad
-import Data.List
-import Text.Printf
+{-# LANGUAGE BangPatterns   #-}
+{-# LANGUAGE NamedFieldPuns #-}
 
-type Addr = String
-type Data = String
+import           Control.Applicative
+import           Control.Monad
+import           Data.Array
+import           Data.Array.IO
+import qualified Data.ByteString       as BS
+import qualified Data.ByteString.Char8 as C8
+import           Data.IORef
+import           Data.List
+import           Data.Maybe
+import           Text.Printf
 
-fromList :: [(Addr, Data, Addr)] -> Addr -> [(Addr, Data, Addr)]
-fromList [] _ = []
-fromList a entry = case findIndex (\(addr, _, _) -> addr == entry) a of
-  Nothing -> []
-  Just idx -> let
-    (l, curr@(addr, d, nextAddr):r) = splitAt idx a
-    in
-    curr:fromList (l++r) nextAddr
+data D = D { d    :: !Int
+           , next :: !Int
+           } deriving Show
 
-fixAddr :: [(Addr, Data, Addr)] -> [(Addr, Data, Addr)]
-fixAddr [] = []
-fixAddr [a] = [a]
-fixAddr ((addr, d, next):(addr', d', next'):ls) = (addr, d, addr'):(fixAddr ((addr', d', next):ls))
+type DArray = IOArray Int D
 
-reverseEvery :: Int -> [(Addr, Data, Addr)] -> [(Addr, Data, Addr)]
-reverseEvery n lst
-  | length lst >= n = let (l, r) = splitAt n lst in fixAddr (reverse l) ++ reverseEvery n r
-  | otherwise = lst
+inputDArray :: Int -> Int -> IO DArray
+inputDArray !entry !cnt = do
+  arr <- newArray (0, 99999) (D 0 (-1))
+  lines <- C8.lines <$> BS.getContents
+  forM_ lines $ \line -> do
+    let addr:d:next:_ = map (fst . fromJust . C8.readInt) $ C8.words line
+    writeArray arr addr (D { d, next })
+  return arr
 
-split :: String -> [String]
-split "" = [""]
-split (' ':as) = "":split as
-split (a:as) = let
-  fst:others = split as
+reverseDArray :: DArray -> Int -> Int -> Int -> IO Int
+reverseDArray _ !entry _ 0 = return entry
+reverseDArray _ !entry _ 1 = return entry
+reverseDArray darray !entry !cnt !cycle = do
+  entryRef <- newIORef entry
+  lastExitRef <- newIORef (-1)
+  newEntries <- replicateM (cnt `quot` cycle) (_reverseDArray darray cycle lastExitRef entryRef)
+  when (cnt `rem` cycle == 0) $ do
+    lastExit <- readIORef lastExitRef
+    dexit <- readArray darray lastExit
+    writeArray darray lastExit dexit{next=(-1)}
+  return $ head newEntries
+  where
+    _reverseDArray :: DArray -> Int -> IORef Int -> IORef Int -> IO Int
+    _reverseDArray darray !cycle lastExitRef entryRef = do
+      lastExit <- readIORef lastExitRef
+      entry' <- readIORef entryRef
+      dentry <- readArray darray entry'
+      currAddrRef <- newIORef entry'
+      nextAddrRef <- newIORef (next dentry)
+      replicateM_ (cycle - 1) $ do
+        currAddr <- readIORef currAddrRef
+        nextAddr <- readIORef nextAddrRef
+        currNode <- readArray darray currAddr
+        nextNode <- readArray darray nextAddr
+        let nextNextAddr = next nextNode
+        writeArray darray nextAddr nextNode{next=currAddr}
+        writeIORef currAddrRef nextAddr
+        writeIORef nextAddrRef nextNextAddr
+      nextCycleEntry <- readIORef nextAddrRef
+      writeArray darray entry' dentry{next=nextCycleEntry}
+      writeIORef entryRef nextCycleEntry
+      newEntry <- readIORef currAddrRef
+      when (lastExit /= -1) $ do
+        dLastExit <- readArray darray lastExit
+        writeArray darray lastExit dLastExit{next=newEntry}
+      writeIORef lastExitRef entry'
+      return newEntry
+
+{-# INLINE printAddr #-}
+printAddr :: Int -> BS.ByteString
+printAddr addr = let
+  strAddr = show addr
   in
-    (a:fst):others
+  -- showString (replicate (5 - length strAddr) '0') $ strAddr
+  C8.replicate (5 - length strAddr) '0' `BS.append` C8.pack strAddr
+
+printArray :: DArray -> Int -> IO ()
+printArray darray !entry = do
+  currD <- readArray darray entry
+  let nextEntry = next currD
+  if nextEntry /= -1
+    then do
+    -- printf "%05d %d %05d\n" entry (d currD) nextEntry
+    C8.putStrLn $ printAddr entry `BS.append` (C8.singleton ' ') `BS.append` (C8.pack $ show (d currD)) `BS.append` C8.singleton ' ' `BS.append` (printAddr nextEntry)
+    printArray darray nextEntry
+    else do
+    -- printf "%05d %d -1\n" entry (d currD)
+    C8.putStrLn $ printAddr entry `BS.append` (C8.singleton ' ') `BS.append` (C8.pack $ show (d currD)) `BS.append` C8.singleton ' ' `BS.append` (C8.pack "-1")
+
+realCnt :: DArray -> Int -> IO Int
+realCnt darray !entry = _realCnt darray entry 0
+  where
+    _realCnt :: DArray -> Int -> Int -> IO Int
+    _realCnt darray !entry !acc =
+      if entry == -1
+      then return acc
+      else do
+        d' <- readArray darray entry
+        _realCnt darray (next d') (acc+1)
 
 main :: IO ()
 main = do
-  input <- getLine
-  let [entry,l,cnt] = split input
-  lst <- replicateM (read l) $ do
-    input <- getLine
-    let [add,d,next] = split input
-    return (add, d, next)
-  forM_ (reverseEvery (read cnt) $ fromList lst entry) $ \(addr, d, next) ->
-    printf "%s %s %s\n" addr d next
+  initAddr:cnt:cycle:_ <- map (fst . fromJust . C8.readInt) . C8.words <$> BS.getLine
+  darray <- inputDArray initAddr cnt
+  cnt' <- realCnt darray initAddr
+  newEntry <- reverseDArray darray initAddr cnt' cycle
+  -- printArray darray newEntry
+  -- printArray darray initAddr
+  return ()
