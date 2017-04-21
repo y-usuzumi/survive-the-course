@@ -38,3 +38,6 @@
       * [2.hs (Haskell)](第五周编程作业/2.hs)
    1. 05-树9 Huffman Codes
       * [3.hs (Haskell)](第五周编程作业/3.hs)
+1. [第六周编程作业](第六周编程作业)
+   1. 06-图2 Saving James Bond - Easy Version
+      * [2.py (Python 3)](第六周编程作业/2.py)
