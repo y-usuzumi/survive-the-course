@@ -8,6 +8,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TopKFrequentElements", "Top
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DecodeString", "DecodeString\DecodeString.csproj", "{995539A8-D2D9-4347-9966-9A20118EFDB8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Subsets", "Subsets\Subsets.csproj", "{E49FC7CF-6224-4C85-9C83-9968F185D7A1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,9 @@ Global
 		{995539A8-D2D9-4347-9966-9A20118EFDB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{995539A8-D2D9-4347-9966-9A20118EFDB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{995539A8-D2D9-4347-9966-9A20118EFDB8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E49FC7CF-6224-4C85-9C83-9968F185D7A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E49FC7CF-6224-4C85-9C83-9968F185D7A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E49FC7CF-6224-4C85-9C83-9968F185D7A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E49FC7CF-6224-4C85-9C83-9968F185D7A1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
