@@ -52,7 +52,6 @@ namespace DecodeString
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("SDF");
             var solution = new Solution();
             var result = solution.DecodeString("3[a2[c]]");
             Console.WriteLine(result);
