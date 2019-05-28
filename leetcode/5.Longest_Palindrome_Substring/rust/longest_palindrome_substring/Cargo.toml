@@ -1,0 +1,7 @@
+[package]
+name = "longest_palindrome_substring"
+version = "0.1.0"
+authors = ["Kenneth Zhao <kenneth.zhao@netis.com.cn>"]
+edition = "2018"
+
+[dependencies]
