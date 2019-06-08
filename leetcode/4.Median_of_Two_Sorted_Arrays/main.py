@@ -3,10 +3,6 @@ import json
 from enum import IntEnum
 from typing import *
 
-class Reason(IntEnum):
-    nums2_out_of_minbound = 1
-    nums2_out_of_maxbound = 2
-
 class Solution:
     def findMedianSortedArrays(self, nums1: List[int], nums2: List[int]) -> float:
         l1, l2 = len(nums1), len(nums2)
@@ -25,8 +21,6 @@ class Solution:
                 idx1, minbound = (minbound + l1 + 1) // 2, idx1
             else:
                 break
-
-        print(f"INDICES: ({idx1}, {idx2})")
 
         if (l1 + l2) % 2 == 0:  # Two medians
             if l1 == 0:

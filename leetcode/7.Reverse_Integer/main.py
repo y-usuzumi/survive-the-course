@@ -12,7 +12,9 @@ class Solution:
             result += x % 10
             x //= 10
         if negative:
-            return -result
+            result = -result
+        if result > 2**31 - 1 or result < -2**31:
+            return 0
         return result
 
 if __name__ == '__main__':
@@ -21,3 +23,5 @@ if __name__ == '__main__':
     print(sol.reverse(-123))
     print(sol.reverse(0))
     print(sol.reverse(10))
+    import pdb; pdb.set_trace()
+    print(sol.reverse(-2147483648))
