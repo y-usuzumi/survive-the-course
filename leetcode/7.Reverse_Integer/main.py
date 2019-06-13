@@ -19,9 +19,8 @@ class Solution:
 
 if __name__ == '__main__':
     sol = Solution()
-    print(sol.reverse(123))
-    print(sol.reverse(-123))
-    print(sol.reverse(0))
-    print(sol.reverse(10))
-    import pdb; pdb.set_trace()
-    print(sol.reverse(-2147483648))
+    print(sol.reverse(123))  # 321
+    print(sol.reverse(-123))  # -321
+    print(sol.reverse(0))  # 0
+    print(sol.reverse(10))  # 1
+    print(sol.reverse(-2147483648))  # 0
