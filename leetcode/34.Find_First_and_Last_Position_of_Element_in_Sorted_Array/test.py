@@ -25,7 +25,6 @@ class SolutionTest(unittest.TestCase):
         )
 
     def test_4(self):
-        import pdb; pdb.set_trace()
         self.assertEqual(
             self.sol.searchRange([2, 2], 3),
             [-1, -1]
