@@ -10,7 +10,7 @@ for each vertex v
    dist[v][v] ← 0
 for each edge (u,v)
    dist[u][v] ← w(u,v)  // the weight of the edge (u,v)
-for k from 1 to |V|
+for k from 1 to |V|  # 必须注意！k在最外层，否则结果不对！血的教训！（不会证明）
    for i from 1 to |V|
       for j from 1 to |V|
          if dist[i][j] > dist[i][k] + dist[k][j] 
