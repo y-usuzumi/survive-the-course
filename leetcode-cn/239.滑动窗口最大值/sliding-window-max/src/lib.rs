@@ -1,4 +1,4 @@
-use std::collections::VecDeque;
+use std::collections::LinkedList;
 
 struct Solution;
 
@@ -11,7 +11,7 @@ impl Solution {
         if uk <= 1 {
             return nums;
         }
-        let mut d = VecDeque::new();
+        let mut d = LinkedList::new();
         let mut result = Vec::with_capacity(uk);
         for (i, item) in nums.iter().enumerate() {
             while d.len() > 0 && nums[*d.back().unwrap()] < *item {
