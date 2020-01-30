@@ -1,4 +1,4 @@
-use std::alloc::{alloc, dealloc, Layout};
+use std::alloc::{alloc_zeroed, dealloc, Layout};
 use std::collections::HashMap;
 
 #[derive(Debug)]
@@ -88,7 +88,7 @@ impl LRUCache {
                     node.val = value;
                 }
                 None => {
-                    let nodep = alloc(Layout::new::<Node>()) as *mut Node;
+                    let nodep = alloc_zeroed(Layout::new::<Node>()) as *mut Node;
                     let node = &mut *nodep;
                     node.key = key;
                     node.val = value;
@@ -123,7 +123,7 @@ impl LRUCache {
                         self.exit = None;
                     }
                     self.hm.remove(&exit_node.key);
-                    // dealloc(exitp as *mut u8, Layout::new::<Node>());
+                    dealloc(exitp as *mut u8, Layout::new::<Node>());
                 }
                 self.count -= 1;
             }
