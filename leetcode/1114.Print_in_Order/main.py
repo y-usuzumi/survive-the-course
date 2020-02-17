@@ -2,7 +2,6 @@ from threading import Semaphore
 
 class Foo:
     def __init__(self):
-        self._curr = 0
         self._sem_2 = Semaphore(0)
         self._sem_3 = Semaphore(0)
 
