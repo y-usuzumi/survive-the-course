@@ -37,9 +37,9 @@ fun repeat(items : int list, times_list : int list) =
     then []
     else
         if hd times_list = 0
-        then repeat2(tl items, tl times_list)
+        then repeat(tl items, tl times_list)
         else
-            hd items :: repeat2(items, hd times_list - 1 :: tl times_list)
+            hd items :: repeat(items, hd times_list - 1 :: tl times_list)
 
 fun addOpt(left : int option, right : int option) =
     if isSome left andalso isSome right then SOME (valOf left + valOf right) else NONE
@@ -99,3 +99,182 @@ fun zipRecycle(xs : int list, ys : int list) =
     in
         zwr_list @ (if null (zwr_xs) then zipCycleXs(xs, zwr_ys) else zipCycleYs(zwr_xs, ys))
     end
+
+fun zipOpt(xs : int list, ys : int list) =
+    if null xs
+    then
+        if null ys
+        then SOME []
+        else NONE
+    else
+        if null ys
+        then NONE
+        else
+            let
+                val zipOpt_tl = zipOpt(tl xs, tl ys)
+            in
+                if isSome zipOpt_tl
+                then
+                    SOME ((hd xs, hd ys) :: valOf zipOpt_tl)
+                else
+                    NONE
+            end
+
+fun lookup(map : (string * int) list, key : string) =
+    if null map
+    then NONE
+    else
+        let
+            val pair = hd map
+        in
+            if #1 pair = key
+            then SOME (#2 pair)
+            else
+                lookup(tl map, key)
+        end
+
+fun splitup(xs : int list) =
+    if null xs
+    then ([], [])
+    else
+        let
+            val head = hd xs
+            val splitup_tl = splitup(tl xs)
+        in
+            if head < 0
+            then (#1 splitup_tl, head :: #2 splitup_tl)
+            else (head :: #1 splitup_tl, #2 splitup_tl)
+        end
+
+fun splitAt(xs : int list, threshold : int) =
+    if null xs
+    then ([], [])
+    else
+        let
+            val head = hd xs
+            val splitup_tl = splitAt(tl xs, threshold)
+        in
+            if head < threshold
+            then (#1 splitup_tl, head :: #2 splitup_tl)
+            else (head :: #1 splitup_tl, #2 splitup_tl)
+        end
+
+fun isSorted(xs : int list) =
+    if null xs
+    then true
+    else
+        if null (tl xs)
+        then true
+        else
+            hd xs <= hd (tl xs) andalso isSorted(tl xs)
+
+fun isAnySorted(xs : int list) =
+    let
+        fun reverse(xs : int list) =
+            if null xs then [] else reverse(tl xs) @ [hd xs]
+    in
+        isSorted xs orelse isSorted(reverse xs)
+    end
+
+fun sortedMerge(xs : int list, ys : int list) =
+    if null xs
+    then ys
+    else
+        if null ys
+        then xs
+        else
+            let
+                val headx = hd xs
+                val heady = hd ys
+            in
+                if headx <= heady
+                then headx :: sortedMerge (tl xs, ys)
+                else heady :: sortedMerge (xs, tl ys)
+            end
+
+fun qsort(xs : int list) =
+    if null xs
+    then xs
+    else
+        let
+            val head = hd xs
+            val splitAt_tl = splitAt(tl xs, head)
+        in
+            qsort(#2 splitAt_tl) @ [head] @ qsort(#1 splitAt_tl)
+        end
+
+fun divide(xs : int list) =
+    if null xs
+    then ([], [])
+    else
+        if null (tl xs)
+        then ([hd xs], [])
+        else
+            let
+                val h1 = hd xs
+                val h2 = hd (tl xs)
+                val divide_tl = divide(tl (tl xs))
+            in
+                (h1 :: (#1 divide_tl), h2 :: (#2 divide_tl))
+            end
+
+fun not_so_quick_sort(xs : int list) =
+    if null xs
+    then []
+    else
+        if null (tl xs)
+        then xs
+        else
+            let
+                val divided_list = divide xs
+                val left_sorted = not_so_quick_sort(#1 divided_list)
+                val right_sorted = not_so_quick_sort(#2 divided_list)
+            in
+                sortedMerge(left_sorted, right_sorted)
+            end
+
+fun fullDivide(k : int, n : int) =
+    if n mod k = 0
+    then
+        let
+            val subfullDivide = fullDivide(k, n div k)
+        in
+            (1 + #1 subfullDivide, #2 subfullDivide)
+        end
+    else
+        (0, n)
+
+fun factorize(n : int) =
+    if n < 2 then []
+    else
+        let
+            fun subFullDivide(k : int, n : int) =
+                if k * k > n
+                then
+                    []
+                else
+                    let
+                        val fullDivideResult = fullDivide(k, n)
+                    in
+                        if #1 fullDivideResult > 0
+                        then (k, #1 fullDivideResult) :: subFullDivide(k+1, #2 fullDivideResult)
+                        else subFullDivide(k+1, #2 fullDivideResult)
+                    end
+        in
+            subFullDivide(2, n)
+        end
+
+fun multiply(xs : (int*int) list) =
+    if null xs
+    then 1
+    else
+        let
+            val head = hd xs
+            fun power(n : int, k : int) =
+                if k = 0 then 1 else n * power(n, k-1)
+        in
+            power(#1 head,  #2 head) * multiply(tl xs)
+        end
+
+fun all_products(xs : (int*int) list) =
+    (* FIXME *)

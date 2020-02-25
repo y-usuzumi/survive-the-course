@@ -106,14 +106,7 @@ fun month_range(day1 : int, day2 : int) =
     if day1 > day2
     then []
     else
-        let
-            val month1 = what_month day1
-            val month2 = what_month day2
-            fun countup(from : int, to : int) =
-                if from > to then [] else from :: countup(from+1, to)
-        in
-            countup(month1, month2)
-        end
+        what_month day1 :: month_range(day1+1, day2)
 
 fun oldest(xs : (int*int*int) list) =
     if null xs
@@ -130,7 +123,7 @@ fun oldest(xs : (int*int*int) list) =
                         let
                             val tail_oldest = oldest_nonempty (tl xs)
                         in
-                            if is_older(head, tail_oldest) then tail_oldest else head
+                            if is_older(head, tail_oldest) then head else tail_oldest
                         end
                 end
         in
