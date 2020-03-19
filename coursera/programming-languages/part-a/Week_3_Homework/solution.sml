@@ -118,3 +118,69 @@ fun officiate(cs, moves, goal) =
     in
         officiate_with_held_cards(cs, moves, [])
     end
+
+fun score_challenge(cs, goal) =
+    let
+        fun calc_aces cs =
+            let
+                fun aux(cs, acc) =
+                    case cs of
+                        [] => acc
+                      | (_, Ace)::cs' => aux(cs', acc+1)
+                      | _::cs' => aux(cs', acc)
+            in
+                aux(cs, 0)
+            end
+        val sum = sum_cards cs
+        val aces = calc_aces cs
+        fun calc_preliminary sum =
+            if sum > goal then 3 * (sum - goal) else goal - sum
+        fun calc_minimum_preliminary(sum, aces) =
+            case aces of
+                0 => calc_preliminary sum
+              | n => Int.min(calc_preliminary sum, calc_minimum_preliminary (sum - 10, aces - 1))
+        val preliminary = calc_minimum_preliminary(sum, aces)
+    in
+        if not(all_same_color cs) then preliminary else preliminary div 2
+    end
+
+fun careful_player(cs, goal) =
+    let
+        fun find_discard_draw_target(draw_card, held_cards) =
+            let
+                fun aux(draw_card, left_slice, right_slice) =
+                    case right_slice of
+                        [] => NONE
+                      | c::cs' => if score(left_slice @ [draw_card] @ cs', goal) = 0
+                                  then SOME c
+                                  else aux(draw_card, c::left_slice, cs')
+            in
+                 aux(draw_card, [], held_cards)
+            end
+        fun aux(cs, held_cards, reversed_moves) =
+            let
+                val curr_score = score (held_cards, goal)
+            in
+                if curr_score = 0
+                then reversed_moves
+                else
+                    case cs of
+                        [] => reversed_moves
+                      | c::cs' =>
+                        let
+                            val curr_sum = sum_cards held_cards
+                        in if goal > curr_sum + 10
+                           then aux(cs', c::held_cards, Draw::reversed_moves)
+                           else case find_discard_draw_target(c, held_cards) of
+                                    NONE => reversed_moves
+                                  | SOME c => Draw::Discard c::reversed_moves
+                        end
+            end
+        val reversed_moves = aux(cs, [], [])
+        fun reverse(curr, acc) =
+            case curr of
+                [] => acc
+              | c::cs => reverse(cs, c::acc)
+    in
+        reverse(reversed_moves, [])
+    end
