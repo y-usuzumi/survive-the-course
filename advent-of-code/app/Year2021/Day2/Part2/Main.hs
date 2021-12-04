@@ -1,6 +1,4 @@
-{-# LANGUAGE FlexibleInstances #-}
-
-import           VM
+import           Year2021.Day2.VM
 
 data Submarine = Submarine (Int, Int) Int
                deriving Show
@@ -8,8 +6,8 @@ data Submarine = Submarine (Int, Int) Int
 instance VM Submarine where
   runCommand cmd (Submarine (x, y) aim) = case cmd of
     Forward steps -> Submarine (x+steps, y+aim*steps) aim
-    Up steps -> Submarine (x, y) (aim-steps)
-    Down steps -> Submarine (x, y) (aim+steps)
+    Up steps      -> Submarine (x, y) (aim-steps)
+    Down steps    -> Submarine (x, y) (aim+steps)
 
 inputFile :: FilePath
 inputFile = "input.txt"

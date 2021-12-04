@@ -1,0 +1,115 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.34.4.
+--
+-- see: https://github.com/sol/hpack
+
+name:           advent-of-code
+version:        0.1.0.0
+description:    Please see the README on GitHub at <https://github.com/githubuser/advent-of-code#readme>
+homepage:       https://github.com/y-usuzumi/survive-the-course#readme
+bug-reports:    https://github.com/y-usuzumi/survive-the-course/issues
+author:         Yukio Usuzumi
+maintainer:     anohigisavay@gmail.com
+copyright:      2021 Yukio Usuzumi
+license:        BSD3
+license-file:   LICENSE
+build-type:     Simple
+extra-source-files:
+    README.md
+    ChangeLog.md
+
+source-repository head
+  type: git
+  location: https://github.com/y-usuzumi/survive-the-course
+
+library
+  exposed-modules:
+      Lib
+      Year2021.Day2.VM
+  other-modules:
+      Paths_advent_of_code
+  hs-source-dirs:
+      src
+  default-extensions:
+      FlexibleInstances
+  build-depends:
+      base >=4.7 && <5
+    , vector
+  default-language: Haskell2010
+
+executable advent-of-code-2021-day2-part1
+  main-is: Main.hs
+  other-modules:
+      Paths_advent_of_code
+  hs-source-dirs:
+      app/Year2021/Day2/Part1
+  default-extensions:
+      FlexibleInstances
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      advent-of-code
+    , base >=4.7 && <5
+    , vector
+  default-language: Haskell2010
+
+executable advent-of-code-2021-day2-part2
+  main-is: Main.hs
+  other-modules:
+      Paths_advent_of_code
+  hs-source-dirs:
+      app/Year2021/Day2/Part2
+  default-extensions:
+      FlexibleInstances
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      advent-of-code
+    , base >=4.7 && <5
+    , vector
+  default-language: Haskell2010
+
+executable advent-of-code-2021-day3-part1
+  main-is: Main.hs
+  other-modules:
+      Paths_advent_of_code
+  hs-source-dirs:
+      app/Year2021/Day3/Part1
+  default-extensions:
+      FlexibleInstances
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      advent-of-code
+    , base >=4.7 && <5
+    , vector
+  default-language: Haskell2010
+
+executable advent-of-code-2021-day3-part2
+  main-is: Main.hs
+  other-modules:
+      Paths_advent_of_code
+  hs-source-dirs:
+      app/Year2021/Day3/Part2
+  default-extensions:
+      FlexibleInstances
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      advent-of-code
+    , base >=4.7 && <5
+    , vector
+  default-language: Haskell2010
+
+test-suite advent-of-code-test
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  other-modules:
+      Paths_advent_of_code
+  hs-source-dirs:
+      test
+  default-extensions:
+      FlexibleInstances
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      advent-of-code
+    , base >=4.7 && <5
+    , vector
+  default-language: Haskell2010

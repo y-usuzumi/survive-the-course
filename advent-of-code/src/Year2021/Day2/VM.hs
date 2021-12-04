@@ -1,4 +1,4 @@
-module VM where
+module Year2021.Day2.VM where
 
 import Data.List
 

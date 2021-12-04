@@ -1,0 +1,86 @@
+name:                advent-of-code
+version:             0.1.0.0
+github:              "y-usuzumi/survive-the-course"
+license:             BSD3
+author:              "Yukio Usuzumi"
+maintainer:          "anohigisavay@gmail.com"
+copyright:           "2021 Yukio Usuzumi"
+
+extra-source-files:
+- README.md
+- ChangeLog.md
+
+# Metadata used when publishing your package
+# synopsis:            Short description of your package
+# category:            Web
+
+# To avoid duplicated efforts in documentation and dealing with the
+# complications of embedding Haddock markup inside cabal files, it is
+# common to point users to the README.md file.
+description:         Please see the README on GitHub at <https://github.com/githubuser/advent-of-code#readme>
+
+dependencies:
+- base >= 4.7 && < 5
+- vector
+
+default-extensions:
+- FlexibleInstances
+
+library:
+  source-dirs: src
+
+executables:
+  advent-of-code-2021-day2-part1:
+    main:                Main.hs
+    source-dirs:
+    - app/Year2021/Day2/Part1
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - advent-of-code
+
+  advent-of-code-2021-day2-part2:
+    main:                Main.hs
+    source-dirs:
+    - app/Year2021/Day2/Part2
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - advent-of-code
+
+  advent-of-code-2021-day3-part1:
+    main:                Main.hs
+    source-dirs:
+    - app/Year2021/Day3/Part1
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - advent-of-code
+
+  advent-of-code-2021-day3-part2:
+    main:                Main.hs
+    source-dirs:
+    - app/Year2021/Day3/Part2
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - advent-of-code
+
+tests:
+  advent-of-code-test:
+    main:                Spec.hs
+    source-dirs:         test
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - advent-of-code

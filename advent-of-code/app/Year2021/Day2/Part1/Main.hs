@@ -1,6 +1,4 @@
-{-# LANGUAGE FlexibleInstances #-}
-
-import           VM
+import           Year2021.Day2.VM
 
 type Submarine = (Int, Int)
 
