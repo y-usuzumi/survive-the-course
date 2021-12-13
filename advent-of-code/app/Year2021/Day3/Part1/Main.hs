@@ -1,5 +1,7 @@
 import           Data.Bits
+import           Data.Functor
 import           Data.List
+import           Paths_advent_of_code
 import           Text.Printf
 
 countZerosOnes :: [Char] -> (Int, Int)
@@ -9,7 +11,7 @@ countZerosOnes chars = countZerosOnes_ chars 0 0
     countZerosOnes_ (x:xs) zeros ones = case x of
       '0' -> countZerosOnes_ xs (zeros+1) ones
       '1' -> countZerosOnes_ xs zeros (ones+1)
-      _ -> error "WTF?????"
+      _   -> error "WTF?????"
 
 mostCommonBit :: [Char] -> Int
 mostCommonBit bits = case countZerosOnes bits of
@@ -26,11 +28,11 @@ leastCommonBit bits = case countZerosOnes bits of
 reportRate :: ([Char] -> Int) -> [String] -> Int
 reportRate reportFunc data_ = foldl' ((.|.) . flip shiftL 1) 0 $ map reportFunc (transpose data_)
 
-inputFile :: FilePath
-inputFile = "input.txt"
+inputFile :: IO String
+inputFile = getDataFileName "sampledata/Year2021/Day3/input.txt"
 
 readInput :: IO [String]
-readInput = lines <$> readFile inputFile
+readInput = inputFile >>= readFile <&> lines
 
 main :: IO ()
 main = do

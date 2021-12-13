@@ -1,3 +1,5 @@
+import           Data.Functor
+import           Paths_advent_of_code
 import           Year2021.Day2.VM
 
 type Submarine = (Int, Int)
@@ -7,11 +9,11 @@ instance VM Submarine where
   runCommand (Down a) (x, y)    = (x, y+a)
   runCommand (Forward a) (x, y) = (x+a, y)
 
-inputFile :: FilePath
-inputFile = "input.txt"
+inputFile :: IO FilePath
+inputFile = getDataFileName "sampledata/Year2021/Day2/input.txt"
 
 readInput :: IO [Command Int]
-readInput = map read . lines <$> readFile inputFile
+readInput = inputFile >>= readFile <&> map read . lines
 
 
 main :: IO ()

@@ -1,7 +1,9 @@
 import           Data.Bits
+import           Data.Functor
 import           Data.List
-import           Data.Vector (Vector)
-import qualified Data.Vector as V
+import           Data.Vector          (Vector)
+import qualified Data.Vector          as V
+import           Paths_advent_of_code
 import           Text.Printf
 
 countZerosOnes :: [Char] -> (Int, Int)
@@ -35,11 +37,11 @@ deepFilter f vs = deepFilter_ f vs 0
 toDecimal :: Vector Char -> Int
 toDecimal chars = V.foldl' ((.|.) . flip shiftL 1) 0 (V.map (read . pure) chars)
 
-inputFile :: FilePath
-inputFile = "input.txt"
+inputFile :: IO String
+inputFile = getDataFileName "sampledata/Year2021/Day3/input.txt"
 
 readInput :: IO [Vector Char]
-readInput = map V.fromList . lines <$> readFile inputFile
+readInput = inputFile >>= readFile <&> map V.fromList . lines
 
 main :: IO ()
 main = do

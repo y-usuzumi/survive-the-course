@@ -18,6 +18,12 @@ build-type:     Simple
 extra-source-files:
     README.md
     ChangeLog.md
+data-files:
+    sampledata/Year2021/Day2/input.txt
+    sampledata/Year2021/Day2/sample_input.txt
+    sampledata/Year2021/Day3/input.txt
+    sampledata/Year2021/Day3/sample_input.txt
+    sampledata/Year2021/Day4/input.txt
 
 source-repository head
   type: git
@@ -33,8 +39,13 @@ library
       src
   default-extensions:
       FlexibleInstances
+      QuasiQuotes
+      TemplateHaskell
   build-depends:
       base >=4.7 && <5
+    , bytestring
+    , matrix
+    , split
     , vector
   default-language: Haskell2010
 
@@ -46,10 +57,15 @@ executable advent-of-code-2021-day2-part1
       app/Year2021/Day2/Part1
   default-extensions:
       FlexibleInstances
+      QuasiQuotes
+      TemplateHaskell
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       advent-of-code
     , base >=4.7 && <5
+    , bytestring
+    , matrix
+    , split
     , vector
   default-language: Haskell2010
 
@@ -61,10 +77,15 @@ executable advent-of-code-2021-day2-part2
       app/Year2021/Day2/Part2
   default-extensions:
       FlexibleInstances
+      QuasiQuotes
+      TemplateHaskell
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       advent-of-code
     , base >=4.7 && <5
+    , bytestring
+    , matrix
+    , split
     , vector
   default-language: Haskell2010
 
@@ -76,10 +97,15 @@ executable advent-of-code-2021-day3-part1
       app/Year2021/Day3/Part1
   default-extensions:
       FlexibleInstances
+      QuasiQuotes
+      TemplateHaskell
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       advent-of-code
     , base >=4.7 && <5
+    , bytestring
+    , matrix
+    , split
     , vector
   default-language: Haskell2010
 
@@ -91,10 +117,35 @@ executable advent-of-code-2021-day3-part2
       app/Year2021/Day3/Part2
   default-extensions:
       FlexibleInstances
+      QuasiQuotes
+      TemplateHaskell
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       advent-of-code
     , base >=4.7 && <5
+    , bytestring
+    , matrix
+    , split
+    , vector
+  default-language: Haskell2010
+
+executable advent-of-code-2021-day4-part1
+  main-is: Main.hs
+  other-modules:
+      Paths_advent_of_code
+  hs-source-dirs:
+      app/Year2021/Day4/Part1
+  default-extensions:
+      FlexibleInstances
+      QuasiQuotes
+      TemplateHaskell
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      advent-of-code
+    , base >=4.7 && <5
+    , bytestring
+    , matrix
+    , split
     , vector
   default-language: Haskell2010
 
@@ -107,9 +158,14 @@ test-suite advent-of-code-test
       test
   default-extensions:
       FlexibleInstances
+      QuasiQuotes
+      TemplateHaskell
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       advent-of-code
     , base >=4.7 && <5
+    , bytestring
+    , matrix
+    , split
     , vector
   default-language: Haskell2010

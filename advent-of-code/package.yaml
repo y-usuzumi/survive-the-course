@@ -21,10 +21,18 @@ description:         Please see the README on GitHub at <https://github.com/gith
 
 dependencies:
 - base >= 4.7 && < 5
+- bytestring
+- matrix
+- split
 - vector
 
 default-extensions:
 - FlexibleInstances
+- QuasiQuotes
+- TemplateHaskell
+
+data-files:
+- sampledata/**/*.txt
 
 library:
   source-dirs: src
@@ -67,6 +75,17 @@ executables:
     main:                Main.hs
     source-dirs:
     - app/Year2021/Day3/Part2
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - advent-of-code
+
+  advent-of-code-2021-day4-part1:
+    main:                Main.hs
+    source-dirs:
+    - app/Year2021/Day4/Part1
     ghc-options:
     - -threaded
     - -rtsopts
