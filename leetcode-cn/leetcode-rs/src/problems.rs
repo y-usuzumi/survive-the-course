@@ -1,6 +1,7 @@
 pub mod four_sum;
 pub mod _1_two_sum;
 pub mod _2_add_two_numbers;
+pub mod _3_longest_substring_without_repeating_characters;
 pub mod _35_search_insert_position;
 pub mod _70_climing_stairs;
 pub mod _167_two_sum_ii_input_array_is_sorted;
