@@ -1,4 +1,4 @@
-struct Solution;
+pub struct Solution;
 
 impl Solution {
     pub fn fib(mut n: i32) -> i32 {

@@ -19,7 +19,7 @@
 		"scope": "rust",
 		"prefix": "sln",
 		"body": [
-			"struct Solution;",
+			"pub struct Solution;",
 			"",
 			"impl Solution {",
 			"    pub fn ${1:function}(${2:args}) -> ${3:ret} {",

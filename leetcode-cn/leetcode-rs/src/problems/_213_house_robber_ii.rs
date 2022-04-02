@@ -1,6 +1,6 @@
 use std::cmp;
 
-struct Solution;
+pub struct Solution;
 
 impl Solution {
     pub fn rob(mut nums: Vec<i32>) -> i32 {

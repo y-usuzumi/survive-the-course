@@ -1,7 +1,7 @@
 use std::collections::{HashMap};
 use std::iter::FromIterator;
 
-struct Solution();
+pub struct Solution();
 
 impl Solution {
     pub fn two_sum(nums: Vec<i32>, target: i32) -> Vec<i32> {

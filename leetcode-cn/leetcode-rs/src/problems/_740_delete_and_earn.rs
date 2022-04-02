@@ -1,7 +1,7 @@
 use std::collections::HashMap;
 use std::cmp::max;
 
-struct Solution;
+pub struct Solution;
 
 impl Solution {
     pub fn delete_and_earn(nums: Vec<i32>) -> i32 {

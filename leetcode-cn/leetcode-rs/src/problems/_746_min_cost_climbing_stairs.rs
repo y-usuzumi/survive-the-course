@@ -1,6 +1,6 @@
 use std::cmp;
 
-struct Solution;
+pub struct Solution;
 
 impl Solution {
     pub fn min_cost_climbing_stairs(mut cost: Vec<i32>) -> i32 {

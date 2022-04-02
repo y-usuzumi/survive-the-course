@@ -1,4 +1,4 @@
-struct Solution;
+pub struct Solution;
 
 impl Solution {
     /// 本解法的思路是从右往左遍历，其中continuous_cants变量记录了到当前位置为止一共有多少个连续的位置
