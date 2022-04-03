@@ -24,3 +24,4 @@ pub mod _746_min_cost_climbing_stairs;
 pub mod _918_maximum_sum_circular_array;
 pub mod _977_squares_of_a_sorted_array;
 pub mod _1137_nth_tribonacci_number;
+pub mod _1567_maximum_length_of_subarray_with_positive_product;
