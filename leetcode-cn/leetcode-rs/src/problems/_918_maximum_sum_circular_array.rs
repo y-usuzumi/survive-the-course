@@ -28,6 +28,9 @@ pub struct Solution;
 /// 结果为0,显然错误。
 impl Solution {
     pub fn max_subarray_sum_circular(mut nums: Vec<i32>) -> i32 {
+        if nums.len() == 1 {
+            return nums[0];
+        }
         // 中间一段的Kadane结果
         let positive_max = Self::kadane(&nums);
         let sum: i32 = nums.iter().sum();
@@ -78,5 +81,10 @@ mod tests {
     #[test]
     fn test_3() {
         assert_eq!(Solution::max_subarray_sum_circular(vec![-3,-2,-3]), -2);
+    }
+
+    #[test]
+    fn test_4() {
+        assert_eq!(Solution::max_subarray_sum_circular(vec![-2]), -2);
     }
 }

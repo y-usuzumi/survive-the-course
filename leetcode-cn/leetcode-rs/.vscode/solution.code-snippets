@@ -19,6 +19,8 @@
 		"scope": "rust",
 		"prefix": "sln",
 		"body": [
+			"// <Place the leetcode link to the question here>",
+			"",
 			"pub struct Solution;",
 			"",
 			"impl Solution {",
