@@ -10,6 +10,7 @@ pub mod _198_house_robber;
 pub mod _19_remove_nth_node_from_end_of_list;
 pub mod _1_two_sum;
 pub mod _213_house_robber_ii;
+pub mod _21_merge_two_sorted_lists;
 pub mod _278_first_bad_version;
 pub mod _283_move_zeroes;
 pub mod _2_add_two_numbers;

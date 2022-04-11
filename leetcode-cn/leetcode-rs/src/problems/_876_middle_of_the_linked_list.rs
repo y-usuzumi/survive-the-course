@@ -28,7 +28,7 @@ mod tests {
     #[test]
     fn test_1() {
         assert_eq!(
-            Solution::middle_node(Some(Box::new(ListNode::from_vals(vec![1, 2, 3, 4, 5]))))
+            Solution::middle_node(ListNode::from_vals(&[1, 2, 3, 4, 5]))
                 .unwrap()
                 .to_vals(),
             vec![3, 4, 5]

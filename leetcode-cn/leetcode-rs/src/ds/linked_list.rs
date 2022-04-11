@@ -11,15 +11,15 @@ impl ListNode {
         ListNode { next: None, val }
     }
 
-    pub fn from_vals(vals: Vec<i32>) -> Self {
+    pub fn from_vals(vals: &[i32]) -> Option<Box<Self>> {
         let mut head = Self::new(0);
         let mut pointer = &mut head;
         for val in vals {
-            let next_node = Self::new(val);
+            let next_node = Self::new(*val);
             pointer.next = Some(Box::new(next_node));
             pointer = pointer.next.as_mut().unwrap()
         }
-        *head.next.unwrap()
+        head.next
     }
 
     pub fn to_vals(&self) -> Vec<i32> {
