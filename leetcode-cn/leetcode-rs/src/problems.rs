@@ -1,5 +1,6 @@
 pub mod _1014_best_sightseeing_pair;
 pub mod _1137_nth_tribonacci_number;
+pub mod _116_populating_next_right_pointers_in_each_node;
 pub mod _121_best_time_to_buy_and_sell_stock;
 pub mod _152_maximum_product_subarray;
 pub mod _1567_maximum_length_of_subarray_with_positive_product;
@@ -22,6 +23,8 @@ pub mod _557_reverse_words_in_string;
 pub mod _55_jump_game;
 pub mod _567_permutation_in_string;
 pub mod _5_TODO_longest_palindromic_string;
+pub mod _617_merge_binary_trees;
+pub mod _695_max_area_of_land;
 pub mod _704_binary_search;
 pub mod _70_climing_stairs;
 pub mod _733_flood_fill;

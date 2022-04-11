@@ -5,7 +5,7 @@ class Test(unittest.TestCase):
     def test_1(self):
         head = ListNode.from_vals([1, 2, 3, 4, 5])
         new_head = Solution().removeNthFromEnd(head, 2)
-        self.assertEquals([1, 2, 3, 5], new_head.to_vals())
+        self.assertEqual([1, 2, 3, 5], new_head.to_vals())
 
     def test_2(self):
         head = ListNode.from_vals([1])
@@ -15,4 +15,4 @@ class Test(unittest.TestCase):
     def test_3(self):
         head = ListNode.from_vals([1, 2])
         new_head = Solution().removeNthFromEnd(head, 1)
-        self.assertEquals([1], new_head.to_vals())
+        self.assertEqual([1], new_head.to_vals())
