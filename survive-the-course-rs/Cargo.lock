@@ -3,7 +3,7 @@
 version = 3
 
 [[package]]
-name = "leetcode-rs"
+name = "survive-the-course-rs"
 version = "0.1.0"
 dependencies = [
  "test-util",
