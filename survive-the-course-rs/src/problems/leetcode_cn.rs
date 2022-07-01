@@ -36,3 +36,5 @@ pub mod _746_min_cost_climbing_stairs;
 pub mod _876_middle_of_the_linked_list;
 pub mod _918_maximum_sum_circular_array;
 pub mod _977_squares_of_a_sorted_array;
+pub mod _jianzhi_offer_09_queue_with_two_stacks;
+pub mod _jianzhi_offer_30_stack_with_min;
