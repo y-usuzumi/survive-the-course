@@ -14,6 +14,7 @@ pub mod _21_merge_two_sorted_lists;
 pub mod _278_first_bad_version;
 pub mod _283_move_zeroes;
 pub mod _295_find_median_from_data_stream;
+pub mod _29_divide_two_integers;
 pub mod _2_add_two_numbers;
 pub mod _344_reverse_string;
 pub mod _35_search_insert_position;
