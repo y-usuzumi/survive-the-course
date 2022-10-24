@@ -1,7 +1,7 @@
 type SortFunc<T> = (a: T, b: T) => number;
 
 export class MinHeap<T> {
-    private vals: T[];
+    private vals: (T | null)[];
     private sortFunc: SortFunc<T>;
 
     constructor(vals: T[] = [], sortFunc: SortFunc<T>) {
@@ -49,7 +49,7 @@ export class MinHeap<T> {
             const currVal = this.vals[currIdx];
             const parentIdx = Math.floor(currIdx / 2);
             const parentVal = this.vals[parentIdx];
-            if (this.isGE(currVal, parentVal)) {
+            if (this.isGE(currVal!, parentVal!)) {
                 break;
             }
             const temp = parentVal;
@@ -68,8 +68,8 @@ export class MinHeap<T> {
                 let currVal = this.vals[currIdx];
                 let leftChild = this.vals[leftChildIdx];
                 let rightChild = this.vals[rightChildIdx];
-                if (this.isGT(currVal, leftChild) || this.isGT(currVal, rightChild)) {
-                    let smallerIdx = this.isLT(leftChild, rightChild) ? leftChildIdx : rightChildIdx;
+                if (this.isGT(currVal!, leftChild!) || this.isGT(currVal!, rightChild!)) {
+                    let smallerIdx = this.isLT(leftChild!, rightChild!) ? leftChildIdx : rightChildIdx;
                     let temp = this.vals[smallerIdx];
                     this.vals[smallerIdx] = currVal;
                     this.vals[currIdx] = temp;
@@ -81,7 +81,7 @@ export class MinHeap<T> {
             } else {
                 let currVal = this.vals[currIdx];
                 let leftChild = this.vals[leftChildIdx];
-                if (this.isGT(currVal, leftChild)) {
+                if (this.isGT(currVal!, leftChild!)) {
                     this.vals[currIdx] = leftChild;
                     this.vals[leftChildIdx] = currVal;
                     currIdx = leftChildIdx;

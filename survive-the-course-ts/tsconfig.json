@@ -4,6 +4,7 @@
         "module": "commonjs",
         "outDir": "out",
         "sourceMap": true,
-        "strictNullChecks": false
+        "strictNullChecks": true,
+        "strictPropertyInitialization": true
     }
 }

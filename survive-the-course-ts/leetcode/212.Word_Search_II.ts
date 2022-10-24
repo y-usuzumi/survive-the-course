@@ -4,12 +4,13 @@ class TrieNode {
     children: Map<string, TrieNode>;
     parent: TrieNode | null;
 
-    constructor(val?: string) {
+    constructor(val?: string | null) {
         if (val === undefined) {
             val = null;
         }
         this.val = val;
         this.children = new Map();
+        this.parent = null;
     }
 
     addWord(s: string) {
@@ -72,7 +73,7 @@ function search(board: string[][], rowIdx: number, colIdx: number, node: TrieNod
     const ch = board[rowIdx][colIdx];
     const nextNode = node.children.get(ch);
     if (nextNode === undefined) {
-        return;
+        return false;
     }
 
     if (nextNode.val !== null) {
@@ -89,6 +90,7 @@ function search(board: string[][], rowIdx: number, colIdx: number, node: TrieNod
     search(board, rowIdx, colIdx-1, nextNode, visited, result);
 
     visited[rowIdx][colIdx] = false;
+    return false;
 }
 
 console.log(findWords([["o","a","a","n"],["e","t","a","e"],["i","h","k","r"],["i","f","l","v"]], ["oath","pea","eat","rain"]));

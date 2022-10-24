@@ -22,7 +22,7 @@ function calcOverlaps(intervals: number[][]): number[][] {
     if (intervals.length <= 1) {
         return [];
     }
-    let result = [];
+    let result: number[][] = [];
     let left = intervals[0];
     for (let idx = 1; idx < intervals.length; idx++) {
         let right = intervals[idx];

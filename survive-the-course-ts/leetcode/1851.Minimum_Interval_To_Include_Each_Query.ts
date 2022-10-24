@@ -27,12 +27,12 @@ function minInterval(intervals: number[][], queries: number[]): number[] {
             intervalIdx++;
         }
 
-        while (heap.size > 0 && heap.peek()[1] < query) {
+        while (heap.size > 0 && heap.peek()![1] < query) {
             const poppedItem = heap.pop();
             console.log(poppedItem);
         }
 
-        resultMap.set(query, heap.size > 0 ? heap.peek()[0] : -1);
+        resultMap.set(query, heap.size > 0 ? heap.peek()![0] : -1);
     }
 
     return queries.map(q => resultMap.get(q));
