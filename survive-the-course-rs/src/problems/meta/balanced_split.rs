@@ -1,4 +1,4 @@
-use test_util::unconfident;
+use test_macro::unconfident;
 
 pub struct Solution;
 
@@ -19,7 +19,10 @@ impl Solution {
                 if arr[new_pivot_idx] == 0 {
                     return true;
                 }
-                return !arr.iter().skip(new_pivot_idx + 1).any(|val| *val == arr[new_pivot_idx]);
+                return !arr
+                    .iter()
+                    .skip(new_pivot_idx + 1)
+                    .any(|val| *val == arr[new_pivot_idx]);
             } else if curr_sum + sum > sum_target {
                 right = new_pivot_idx;
             } else {
@@ -29,10 +32,13 @@ impl Solution {
         }
 
         return curr_sum == sum_target;
-
     }
 
-    fn split_by_pivot_inplace(arr: &mut Vec<i32>, mut left: usize, mut right: usize) -> (i32, usize) {
+    fn split_by_pivot_inplace(
+        arr: &mut Vec<i32>,
+        mut left: usize,
+        mut right: usize,
+    ) -> (i32, usize) {
         if left >= right {
             return (0, left);
         }
@@ -68,8 +74,8 @@ impl Solution {
             arr.swap(left_idx, left);
             return (sum, left_idx);
         } else {
-            arr.swap(left_idx-1, left);
-            return (sum, left_idx-1);
+            arr.swap(left_idx - 1, left);
+            return (sum, left_idx - 1);
         }
     }
 }
@@ -85,6 +91,9 @@ mod tests {
 
     #[test]
     fn test_2() {
-        assert_eq!(Solution::balanced_split_exists(&mut vec![3, 6, 3, 4, 4]), false);
+        assert_eq!(
+            Solution::balanced_split_exists(&mut vec![3, 6, 3, 4, 4]),
+            false
+        );
     }
 }
