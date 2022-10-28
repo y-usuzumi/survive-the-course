@@ -6,6 +6,8 @@ edition = "2021"
 
 [dependencies]
 test-util = { path = "test-util" }
+test-macro = { path = "test-macro" }
+automod = '*'
 
 [workspace]
-members = ["test-util"]
+members = ["test-util", "test-macro"]
