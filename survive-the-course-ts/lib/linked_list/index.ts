@@ -7,7 +7,7 @@ export class ListNode<T> {
         this.next = null;
     }
 
-    prepend(val: T): ListNode<T> {
+    unshift(val: T): ListNode<T> {
         const newNode = new ListNode(val);
         newNode.next = this;
         return newNode;
@@ -33,7 +33,7 @@ export class LinkedList<T> {
         this.size = 0;
     }
 
-    append(val: T) {
+    push(val: T) {
         if (this.last === null) {
             this.head = this.last = new ListNode(val);
         } else {
@@ -44,7 +44,7 @@ export class LinkedList<T> {
         this.size++;
     }
 
-    prepend(val: T) {
+    unshift(val: T) {
         if (this.head === null) {
             this.head = this.last = new ListNode(val);
         } else {
@@ -68,6 +68,7 @@ export class LinkedList<T> {
             if (this.last === oldHead) {
                 this.last = null;
             }
+            this.size--;
             return oldHead.val;
         } else {
             let prev = this.head;
@@ -79,6 +80,7 @@ export class LinkedList<T> {
                     if (this.last === curr) {
                         this.last = prev;
                     }
+                    this.size--;
                     return curr.val;
                 }
                 prev = curr;
@@ -86,6 +88,23 @@ export class LinkedList<T> {
             }
         }
         return null;
+    }
+
+    shift(): T | null {
+        if (this.head === null) {
+            return null;
+        }
+        if (this.head === this.last) {
+            let result = this.head;
+            this.head = this.last = null;
+            this.size--;
+            return result.val;
+        }
+        let result = this.head;
+        this.head = result.next;
+        result.next = null;
+        this.size--;
+        return result.val;
     }
 
     find(f: (t: T) => boolean): T | null {
@@ -119,7 +138,7 @@ export class LinkedList<T> {
     static fromArray<T>(arr: T[]): LinkedList<T> {
         const result: LinkedList<T> = new LinkedList();
         for (const item of arr) {
-            result.append(item);
+            result.push(item);
         }
         return result;
     }

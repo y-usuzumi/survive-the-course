@@ -1,6 +1,5 @@
-import { UndirectedAdjacencyList, UndirectedAdjacencyMatrix, UndirectedGraph, VertexWeightPair } from ".";
+import { UndirectedAdjacencyMatrix, UndirectedGraph, VertexWeightPair } from ".";
 import { DisjointSets } from "../disjoint_sets";
-import { SimpleUndirectedGraphVisualizer } from "./visualizer";
 
 export function prims(g: UndirectedGraph): UndirectedGraph {
     const minCostEdges: VertexWeightPair[] = new Array(g.size);

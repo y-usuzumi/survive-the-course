@@ -115,7 +115,7 @@ export class DirectedAdjacencyList implements DirectedGraph {
     }
 
     addEdge(v1: number, v2: number, w: number) {
-        this.adjList[v1].append([v2, w]);
+        this.adjList[v1].push([v2, w]);
     }
 
     removeEdge(v1: number, v2: number) {

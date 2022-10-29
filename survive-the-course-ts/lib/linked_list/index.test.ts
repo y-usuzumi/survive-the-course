@@ -1,37 +1,37 @@
 import {describe, expect, test} from '@jest/globals';
 import { LinkedList } from ".";
 
-describe('LinkedList append and prepend', () => {
-    test('append single', () => {
+describe('LinkedList push and unshift', () => {
+    test('push single', () => {
         const l: LinkedList<number> = new LinkedList();
-        l.append(3);
+        l.push(3);
         expect(l.toArray()).toStrictEqual([3]);
     });
 
-    test('append double', () => {
+    test('push double', () => {
         const l: LinkedList<number> = new LinkedList();
-        l.append(3);
-        l.append(4);
+        l.push(3);
+        l.push(4);
         expect(l.toArray()).toStrictEqual([3, 4]);
     });
 
-    test('prepend single', () => {
+    test('unshift single', () => {
         const l: LinkedList<number> = new LinkedList();
-        l.prepend(3);
+        l.unshift(3);
         expect(l.toArray()).toStrictEqual([3]);
     });
 
-    test('prepend double', () => {
+    test('unshift double', () => {
         const l: LinkedList<number> = new LinkedList();
-        l.prepend(3);
-        l.prepend(4);
+        l.unshift(3);
+        l.unshift(4);
         expect(l.toArray()).toStrictEqual([4, 3]);
     });
 
-    test('prepend and append', () => {
+    test('unshift and push', () => {
         const l: LinkedList<number> = new LinkedList();
-        l.prepend(3);
-        l.append(4);
+        l.unshift(3);
+        l.push(4);
         expect(l.toArray()).toStrictEqual([3, 4]);
     });
 });

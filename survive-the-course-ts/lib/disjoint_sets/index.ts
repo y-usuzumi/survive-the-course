@@ -8,8 +8,8 @@ export class DisjointSets {
     }
 
     /**
-     * Finds the ancestor and the rank of the set
-     * @param v Element
+     * Finds the ancestor and the rank of the set.
+     * @param v The element
      * @returns [ancestor, rank]
      */
     findAncestor(v: number): AncestorRankPair {
