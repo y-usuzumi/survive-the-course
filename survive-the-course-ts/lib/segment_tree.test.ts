@@ -1,5 +1,5 @@
 import { describe, test, expect } from '@jest/globals';
-import { MinSegmentTree, SumSegmentTree } from './segment_tree';
+import { MinSegmentTree, SegmentTree, SumSegmentTree } from './segment_tree';
 
 describe('Sum segment tree', () => {
     test('Construct correct underlying arr', () => {
@@ -33,3 +33,13 @@ describe('Min segment tree', () => {
         expect(st.aggregate(1, 5)).toBe(1);
     })
 });
+
+describe('Max string segment tree', () => {
+    test('Max of 2-4', () => {
+        const arr = ["Hello", "World", "Congratulations", "I", "Aggregation"];
+        const st = new SegmentTree<string, [number, string]>(arr, v => [v.length, v], () => [0, ''], (left, right) => {
+            return left[0] > right[0] ? left : right;
+        });
+        expect(st.aggregate(2, 4)).toStrictEqual([15, "Congratulations"]);
+    });
+})
