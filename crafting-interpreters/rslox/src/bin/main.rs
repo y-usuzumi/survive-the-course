@@ -1,6 +1,9 @@
+/*!
+ * The rslox compiler executable.
+ */
 use std::{env::args, process::exit};
 
-use rslox::{run_file, run_prompt, RSLoxResult};
+use rslox::{globals::globals, init_rslox, run_file, run_prompt, RSLoxResult};
 
 const EXITCODE_INCORRECT_USAGE: i32 = 64;
 
@@ -12,6 +15,9 @@ fn main() -> RSLoxResult<()> {
         println!("Usage: {} [script]", command_name);
         exit(EXITCODE_INCORRECT_USAGE);
     }
+
+    init_rslox();
+    println!("has_error: {}", globals().read().unwrap().has_error);
 
     if args.len() == 1 {
         run_file(&args[0])

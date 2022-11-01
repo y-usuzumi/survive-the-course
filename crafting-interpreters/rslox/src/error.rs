@@ -1,7 +1,12 @@
+/*!
+ * Module for error handling inside the compiler.
+ */
 use std::io;
 
 #[derive(Debug)]
 pub enum RSLoxError {
+    Undefined1,
+    Undefined2,
     IOError(io::Error),
 }
 

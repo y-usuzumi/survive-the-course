@@ -1,9 +1,13 @@
+/*!
+ * Module for colorization.
+ */
+
 use self::Color::*;
 use lazy_static::lazy_static;
 use std::collections::HashMap;
 
 #[derive(PartialEq, Eq, PartialOrd, Hash)]
-pub enum Color {
+pub(crate) enum Color {
     Black,
     Red,
     Green,
@@ -25,7 +29,7 @@ lazy_static! {
     ]);
 }
 
-pub fn colorize(s: &str, color: Color) -> String {
+pub(crate) fn colorize(s: &str, color: Color) -> String {
     let (idx0, idx1) = COLOR_MAP[&color];
     format!("\x1b[{};{}m{}\x1b[0m", idx0, idx1, s)
 }

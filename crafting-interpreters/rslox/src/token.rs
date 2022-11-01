@@ -1,2 +1,5 @@
+/*!
+ * Module that defines different token types.
+ */
 #[derive(Debug)]
-pub enum Token {}
+pub(crate) enum Token {}

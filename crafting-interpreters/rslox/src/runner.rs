@@ -1,6 +1,9 @@
+/*!
+ * Module of the main compilation process.
+ */
 use crate::{lexer::Lexer, RSLoxResult};
 
-pub struct Runner;
+pub(crate) struct Runner;
 
 impl Runner {
     pub fn new() -> Self {
