@@ -1,0 +1,244 @@
+@startuml
+!theme toy
+
+interface Cloneable
+
+interface Iterable<T> {
+    Iterator<T> iterator()
+    void forEach(Consumer<? super T> action)
+    Spliterator<T> spliterator() <<no idea what it does>>
+}
+
+interface Collection<E> {
+    int size()
+    boolean isEmpty()
+    boolean contains(Object o)
+    Iterator<E> iterator()
+    Object[] toArray()
+    <T> T[] toArray(T[] a)
+    boolean add(E e)
+    boolean remove(Object o)
+    boolean containsAll(Collection<?> c)
+    boolean addAll(Collection<? extends E> c)
+    boolean removeAll(Collection<?> c)
+    boolean removeIf(Predicate<? super E> filter)
+    boolean retainAll(Collection<?> c)
+    void clear()
+    --
+    equals, hashCode
+    --
+    Stream<E> stream()
+    Stream<E> parallelStream()
+    --
+    ...
+}
+
+interface Set<E> {
+    {static} <E> Set<E> of(...)
+    {static} <E> Set<E> copyOf(Collection<? extends E> coll)
+}
+
+interface SortedSet<E> {
+    Comparator<? super E> comparator()
+    SortedSet<E> subSet(E fromElement, E toElement)
+    SortedSet<E> headSet(E toElement)
+    SortedSet<E> tailSet(E fromElement)
+    E first()
+    E last()
+}
+
+interface NavigableSet<E> {
+    E lower(E e)
+    E floor(E e)
+    E ceiling(E e)
+    E higher(E e)
+    E pollFirst()
+    E pollLast()
+    NavigableSet<E> descendingSet()
+    NavigableSet<E> subSet(E fromElement, boolean fromInclusive, E toElement, boolean toInclusive)
+    NavigableSet<E> headSet(E toElement, boolean inclusive)
+    NavigableSet<E> tailSet(E fromElement, boolean inclusive)
+}
+
+interface Queue<E> {
+    boolean add(E e) <<always returns true but may throw>>
+    boolean offer(E e) <<returns false when not added>>
+    E remove() <<get and remove first, throws when empty>>
+    E poll() <<get and remove first, returns null when empty>>
+    E element() <<get first, throws when empty>>
+    E peek() <<get first, returns null when empty>>
+}
+
+interface Deque<E> {
+    void addFirst(E e) <<throws when overflow>>
+    void addLast(E e) <<throws when overflow>>
+    boolean offerFirst(E e) <<does not throw when overflow>>
+    boolean offerLast(E e) <<does not throw when overflow>>
+    E removeFirst() <<throws when empty>>
+    E removeLast() <<throws when empty>>
+    E pollFirst() <<returns null when empty>>
+    E pollLast() <<returns null when empty>>
+    E getFirst() <<throws when empty>>
+    E getLast() <<throws when empty>>
+    E peekFirst() <<returns null when empty>>
+    E peekLast() <<returns null when empty>>
+    boolean removeFirstOccurence(Object o) <<returns false when not found>>
+    boolean removeLastOccurrence(Object o) <<returns false when not found>>
+    boolean addAll(Collection<? extends E> c)
+    void push(E e) <<throws when overflow>>
+    E pop() <<throws when empty>>
+}
+
+interface List<E> {
+    boolean addAll(int index, Collection<? extends E> c)
+    void replaceAll(UnaryOperator<E> operator)
+    void sort(Comparator<? super E> c)
+    E get(int index)
+    E set(int index, E element)
+    void add(int index, E element)
+    E remove(int index)
+    int indexOf(Object o)
+    int lastIndexOf(Object o)
+    ListIterator<E> listIterator(int index)
+    List<E> subList(int fromIndex, int toIndex)
+    {static} <E> List<E> of(...)
+    {static} <E> List<E> copyOf(Collection<? extends E> coll)
+}
+
+abstract class AbstractCollection<E> {
+
+}
+
+abstract class AbstractList<E> {
+
+}
+
+abstract class AbstractSequentialList<E> {
+}
+
+abstract class AbstractSet<E> {
+
+}
+
+abstract class AbstractQueue<E> {
+
+}
+
+class LinkedList<E> {
+    new(Collection<? extends E> c)
+
+
+    Iterator<E> descendingIterator()
+    Object clone()
+}
+
+class ArrayList<E> {
+    new()
+    new(int initialCapacity)
+    new(Collection<? extends E> c)
+    void trimToSize()
+    void ensureCapacity(int minCapacity)
+    ListIterator<E> listIterator(int index)
+}
+
+class Vector<E> {
+    new()
+    new(int initialCapacity)
+    new(int initialCapacity, int capacityIncrement)
+    new(Collection<? extends E> c)
+    void copyInto(Object[] anArray)
+    void trimToSize()
+    void ensureCapacity(int minCapacity)
+    void setSize(int newSize)
+    Enumeration<E> elements()
+    --
+    ...
+}
+
+class Stack<E> {
+    E push(E item)
+    E pop()
+    E peek()
+    boolean empty()
+    int search(Object o) <<from the top of stack. 1-based or -1>>
+}
+
+class TreeSet<E> {
+    new()
+    new(Comparator<? super E> comparator)
+    new(Collection<? extends E> c)
+    new(SortedSet<E> s)
+}
+
+class HashSet<E> {
+    new()
+    new(int initialCapacity)
+    new(int initialCapacity, float loadFactor)
+    new(Collection<? extends E> c)
+}
+
+class EnumSet<E extends Enum<E>> {
+    ...
+}
+
+class PriorityQueue<E> {
+    new()
+    new(int initialCapacity)
+    new(Comparator<? super E> comparator)
+    new(int initialCapacity, Comparator<? super E> comparator)
+    new(Collection<? extends E> c)
+    new(PriorityQueue<? extends E> c)
+    new(SortedSet<? extends E> c)
+}
+
+class ArrayDeque<E> {
+    new()
+    new(int numElements)
+    new(Collection<? extends E> c)
+}
+
+class LinkedHashSet<E> {
+    new()
+    new(int initialCapacity)
+    new(int initialCapacity, float loadFactor)
+    new(Collection<? extends E> c)
+    {static} <T> LinkedHashSet<T> newLinkedHashSet(int numElements)
+}
+
+Iterable <|-- Collection
+Collection <|-- Set
+Collection <|-- Queue
+Queue <|-- Deque
+Collection <|-- List
+Collection <|-- AbstractCollection
+List <|-- AbstractList
+AbstractCollection <|-- AbstractList
+AbstractList <|-- AbstractSequentialList
+AbstractSequentialList <|-- LinkedList
+Deque <|-- LinkedList
+Cloneable <|-- LinkedList
+AbstractList <|-- ArrayList
+Cloneable <|-- ArrayList
+AbstractList <|-- Vector
+Cloneable <|-- Vector
+Vector <|-- Stack
+AbstractCollection <|-- AbstractSet
+Set <|-- AbstractSet
+Set <|-- SortedSet
+SortedSet <|-- NavigableSet
+AbstractSet <|-- TreeSet
+NavigableSet <|-- TreeSet
+Cloneable <|-- TreeSet
+AbstractSet <|-- HashSet
+Cloneable <|-- HashSet
+AbstractSet <|-- EnumSet
+Cloneable <|-- EnumSet
+Queue <|-- AbstractQueue
+AbstractCollection <|-- AbstractQueue
+AbstractQueue <|-- PriorityQueue
+AbstractCollection <|-- ArrayDeque
+Deque <|-- ArrayDeque
+Cloneable <|-- ArrayDeque
+HashSet <|-- LinkedHashSet
+
+@enduml

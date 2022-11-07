@@ -1,0 +1,83 @@
+@startuml
+!theme toy
+
+interface Cloneable
+
+interface Map<K, V> {
+    int size()
+    boolean isEmpty()
+    boolean containsKey(Object key)
+    boolean containsValue(Object value)
+    V get(Object key)
+    V put(K key, V value)
+    V remove(Object key)
+    void putAll(Map<? extends K, ? extends V> m)
+    void clear()
+    V computeIfAbsent(K key, Function<? super K, ? extends V> mappingFunction)
+    V computeIfPresent(K key, BiFunction<? super K, ? super V, ? extends V> remappingFunction)
+    V compute(K key, BiFunction<? super K, ? super V, ? extends V> remappingFunction)
+    V merge(K key, V value, BiFunction<? super V, ? super V, ? extends V> remappingFunction)
+    {static} of([K, V, ...])
+    {static} <K, V> Map<K, V> ofEntries(Entry<? extends K, ? extends V>... entries)
+    {static} <K, V> Map<K, V> copyOf(Map<? extends K, ? extends V> map)
+}
+
+interface SortedMap<K, V> {
+    Comparator<? super K> comparator()
+    SortedMap<K,V> subMap(K fromKey, K toKey)
+    SortedMap<K,V> headMap(K toKey) <<portion whose keys < toKey>>
+    SortedMap<K,V> tailMap(K fromKey) <<portion whose keys >= toKey>>
+    K firstKey()
+    K lastKey()
+    Set<K> keySet()
+    Collection<V> values()
+    Set<Map.Entry<K, V>> entrySet()
+}
+
+interface NavigableMap<K, V> {
+    Map.Entry<K,V> lowerEntry(K key) <<among those whose key < key, the greatest>>
+    K lowerKey(K key)
+    Map.Entry<K,V> floorEntry(K key) <<among whose whose key <= key, the greatest>>
+    K floorKey(K key)
+    Map.Entry<K,V> ceilingEntry(K key) <<among those whose key >= key, the least>>
+    K ceilingKey(K key)
+    Map.Entry<K,V> higherEntry(K key) <<among those whose key > key, the least>>
+    K higherKey(K key)
+    Map.Entry<K,V> firstEntry() <<least>>
+    Map.Entry<K,V> lastEntry() <<greatest>>
+    Map.Entry<K,V> pollFirstEntry()
+    Map.Entry<K,V> pollLastEntry()
+    NavigableMap<K,V> descendingMap() <<reverse view>>
+    NavigableSet<K> navigableKeySet() <<ascending order>>
+    NavigableSet<K> descendingKeySet()
+    NavigableMap<K,V> subMap(K fromKey, boolean fromInclusive, K toKey, boolean toInclusive)
+    NavigableMap<K,V> headMap(K toKey, boolean inclusive)
+    NavigableMap<K,V> tailMap(K fromKey, boolean inclusive)
+}
+
+abstract class AbstractMap<K, V>
+
+class TreeMap<K, V> {
+    new()
+    new(Comparator<? super K> comparator)
+    new(Map<? extends K, ? extends V> m)
+    new(SortedMap<K, ? extends V> m)
+    public V computeIfAbsent(K key, Function<? super K, ? extends V> mappingFunction)
+}
+
+class HashMap<K, V> {
+    new()
+    new(int initialCapacity)
+    new(int initialCapacity, float loadFactor)
+    new(Map<? extends K, ? extends V> m)
+}
+
+Map <|-- SortedMap
+SortedMap <|-- NavigableMap
+Map <|-- AbstractMap
+AbstractMap <|-- TreeMap
+NavigableMap <|-- TreeMap
+Cloneable <|-- TreeMap
+AbstractMap <|-- HashMap
+Cloneable <|-- HashMap
+@enduml

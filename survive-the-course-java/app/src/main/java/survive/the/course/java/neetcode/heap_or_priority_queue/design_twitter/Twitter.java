@@ -1,12 +1,16 @@
 package survive.the.course.java.neetcode.heap_or_priority_queue.design_twitter;
 
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.PriorityQueue;
 import java.util.Set;
+import java.util.TreeSet;
 import java.util.stream.Collectors;
 
 class TimeTweetIdPair {
@@ -22,10 +26,10 @@ class TimeTweetIdPair {
 public class Twitter {
     private Map<Integer, LinkedList<TimeTweetIdPair>> tweets = new HashMap<>();
     private Map<Integer, Set<Integer>> followees = new HashMap<>();
+
     private static int time = 0;
 
     public Twitter() {
-
     }
 
     public void postTweet(int userId, int tweetId) {
@@ -79,7 +83,7 @@ public class Twitter {
             default:
                 return mergeTakeTwo(
                         mergeTake(lists.subList(0, lists.size() / 2), num),
-                        mergeTake(lists.subList(lists.size() / 2, lists.size()), num),
+                        mergeTake(lists.subList(lists.size() / 2 + 1, lists.size()), num),
                         num);
         }
     }

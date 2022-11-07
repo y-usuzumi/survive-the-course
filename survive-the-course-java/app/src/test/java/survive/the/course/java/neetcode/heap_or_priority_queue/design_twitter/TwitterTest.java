@@ -2,7 +2,6 @@ package survive.the.course.java.neetcode.heap_or_priority_queue.design_twitter;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 
 import org.junit.jupiter.api.Test;
