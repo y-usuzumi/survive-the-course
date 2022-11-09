@@ -35,6 +35,9 @@ public class Solution {
 
         while (!pq.isEmpty()) {
             VertexDistPair currVdp = pq.poll();
+            if (visited.contains(currVdp.vertex)) {
+                continue;
+            }
             visited.add(currVdp.vertex);
 
             if (currVdp.dist > minTime) {
