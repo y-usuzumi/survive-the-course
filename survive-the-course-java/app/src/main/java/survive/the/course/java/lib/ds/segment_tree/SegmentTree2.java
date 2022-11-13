@@ -1,11 +1,11 @@
-package survive.the.course.java.lib.ds;
+package survive.the.course.java.lib.ds.segment_tree;
 
 import java.util.List;
 
 /**
  * Efficient Segment Tree implementation
  */
-public class SegmentTree {
+public class SegmentTree2 {
     private int[] arr;
     private int length;
 
@@ -13,7 +13,7 @@ public class SegmentTree {
      * Creates a Segment Tree from a list of integers
      * @param data
      */
-    public SegmentTree(List<Integer> data) {
+    public SegmentTree2(List<Integer> data) {
         this.length = data.size();
         arr = new int[data.size() * 2];
         for (int idx = 0; idx < data.size(); idx++) {
