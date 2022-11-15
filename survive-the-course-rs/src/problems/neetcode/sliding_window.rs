@@ -1,1 +1,1 @@
-automod::dir!("src/problems/neetcode/sliding_window");
+automod::dir!(pub "src/problems/neetcode/sliding_window");

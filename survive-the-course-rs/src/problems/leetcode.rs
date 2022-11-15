@@ -1,1 +1,1 @@
-automod::dir!("src/problems/leetcode");
+automod::dir!(pub "src/problems/leetcode");

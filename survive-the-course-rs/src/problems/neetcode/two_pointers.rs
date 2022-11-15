@@ -1,1 +1,1 @@
-automod::dir!("src/problems/neetcode/two_pointers");
+automod::dir!(pub "src/problems/neetcode/two_pointers");

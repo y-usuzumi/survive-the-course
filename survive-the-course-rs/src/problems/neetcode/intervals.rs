@@ -1,1 +1,1 @@
-automod::dir!("src/problems/neetcode/intervals");
+automod::dir!(pub "src/problems/neetcode/intervals");

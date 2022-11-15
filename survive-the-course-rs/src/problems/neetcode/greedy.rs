@@ -1,1 +1,1 @@
-automod::dir!("src/problems/neetcode/greedy");
+automod::dir!(pub "src/problems/neetcode/greedy");
