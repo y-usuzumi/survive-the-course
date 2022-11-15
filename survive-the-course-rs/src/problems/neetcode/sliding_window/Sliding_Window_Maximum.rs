@@ -9,8 +9,8 @@ impl Solution {
         let k = k as usize;
         let mut left_pointer = 0;
         let mut right_pointer = 0;
-        let mut q: VecDeque<usize> = VecDeque::new();
-        let mut result = Vec::with_capacity(k);
+        let mut q: VecDeque<usize> = VecDeque::with_capacity(k);
+        let mut result = Vec::with_capacity(nums.len() - k + 1);
         while right_pointer < nums.len() {
             while q.len() > 0 && nums[*q.back().unwrap()] <= nums[right_pointer] {
                 q.pop_back();
