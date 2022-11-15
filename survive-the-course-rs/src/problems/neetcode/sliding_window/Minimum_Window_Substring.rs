@@ -15,7 +15,7 @@ impl Solution {
     //    number of certain chars, or it may include useless chars. Therefore, we can
     //    move it rightward. Make sure to increment the counter by one whenever a
     //    useful char is skipped, and decrement the counter of matched chars when
-    //    the counter of the char in counter map goes back to 0. At this point,
+    //    the counter of the char in counter map goes back to greater than 1. At this point,
     //    we know that we need to accept more chars by moving the right pointer
     //    hoping that the missing char can be regained.
     pub fn min_window(s: String, t: String) -> String {
