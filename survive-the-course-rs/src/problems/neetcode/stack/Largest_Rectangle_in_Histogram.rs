@@ -9,7 +9,7 @@ impl Solution {
     // element in the stack, the area in effect is bounded to right before the
     // current position.
     pub fn largest_rectangle_area(heights: Vec<i32>) -> i32 {
-        let mut heights_len = heights.len();
+        let heights_len = heights.len();
         let mut stack: Vec<(usize, i32)> = Vec::new();
         let mut curr_max = 0;
         for (idx, height) in heights.into_iter().enumerate() {
