@@ -45,7 +45,7 @@ mod test {
     fn test_empty() {
         let mut arr: Vec<i32> = vec![];
         quick_sort(&mut arr);
-        assert_eq!(arr, vec![]);
+        assert_eq!(arr, vec![] as Vec<i32>);
     }
 
     #[test]
