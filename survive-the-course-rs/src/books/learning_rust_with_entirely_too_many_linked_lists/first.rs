@@ -78,15 +78,18 @@ pub mod better_list {
 pub mod better_list2 {
     use std::mem;
 
+    #[derive(Debug)]
     pub struct List<T> {
         head: Link<T>,
     }
 
+    #[derive(Debug)]
     enum Link<T> {
         Empty,
         More(Box<Node<T>>),
     }
 
+    #[derive(Debug)]
     struct Node<T> {
         val: T,
         next: Link<T>,
@@ -97,7 +100,7 @@ pub mod better_list2 {
             List { head: Link::Empty }
         }
 
-        pub fn prepend(&mut self, val: T) {
+        pub fn pushleft(&mut self, val: T) {
             let new_head = Link::More(Box::new(Node {
                 val,
                 // mem::replace replaces the value referenced by mut-ref `dest` with
@@ -105,6 +108,35 @@ pub mod better_list2 {
                 next: mem::replace(&mut self.head, Link::Empty),
             }));
             self.head = new_head;
+        }
+
+        pub fn popleft(&mut self) -> Option<T> {
+            match mem::replace(&mut self.head, Link::Empty) {
+                Link::Empty => None,
+                Link::More(next) => {
+                    self.head = next.next;
+                    Some(next.val)
+                }
+            }
+        }
+    }
+
+    #[cfg(test)]
+    mod tests {
+        use super::*;
+
+        #[test]
+        fn test_pop_empty() {
+            assert_eq!(List::<i32>::new().popleft(), None);
+        }
+
+        #[test]
+        fn test_push_pop() {
+            let mut list = List::new();
+            let val = 3;
+            list.pushleft(val);
+            assert_eq!(list.popleft(), Some(val));
+            assert_eq!(list.popleft(), None);
         }
     }
 }
