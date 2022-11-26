@@ -1,5 +1,9 @@
 use std::fmt::Debug;
 
+pub fn strs_into_strings(f: Vec<&str>) -> Vec<String> {
+    f.into_iter().map(|s| s.to_string()).collect()
+}
+
 pub trait EqIgnoreOrdRec: Ord + Clone + Debug {
     fn are_equal_ignore_ord_rec(&self, other: &Self) -> bool;
 }

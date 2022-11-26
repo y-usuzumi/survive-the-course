@@ -81,6 +81,6 @@ mod tests {
 
     #[test]
     fn test_1() {
-        assert_eq!(Solution::function(), 0);
+        todo!();
     }
 }
