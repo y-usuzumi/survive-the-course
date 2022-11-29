@@ -1,5 +1,7 @@
 // https://leetcode.com/problems/number-of-digit-one/
 
+// TODO: Not completed
+
 pub struct Solution;
 
 impl Solution {
@@ -16,12 +18,11 @@ impl Solution {
         let remainder = n % base;
         let mut result = 0;
         let remainder_digits = Self::count_digit_one(remainder);
+        result += (n / base - 1) * Self::count_digit_one_by_log10(log10);
         if n >= 2 * base {
-            result += (n / base + 1) * Self::count_digit_one_by_log10(log10 - 1);
             result += base;
         } else {
             result += n - base;
-            result += remainder_digits;
         }
 
         result += remainder_digits;
@@ -30,9 +31,9 @@ impl Solution {
 
     pub fn count_digit_one_by_log10(n: u32) -> i32 {
         if n == 0 {
-            return 1;
+            return 0;
         }
-        let mut n0 = n;
+        let mut n0 = n - 1;
         let mut result = 10_i32.pow(n0);
         while n0 > 0 {
             result += 10_i32.pow(n as u32 - 1);
@@ -48,17 +49,17 @@ mod tests {
 
     #[test]
     fn test_count_digit_one_by_log10_1() {
-        assert_eq!(Solution::count_digit_one_by_log10(2), 132);
+        assert_eq!(Solution::count_digit_one_by_log10(2), 21);
     }
 
     #[test]
     fn test_count_digit_one_by_log10_2() {
-        assert_eq!(Solution::count_digit_one(33), 15);
+        assert_eq!(Solution::count_digit_one(33), 14);
     }
 
     #[test]
     fn test_1() {
-        assert_eq!(Solution::count_digit_one(13), 6);
+        assert_eq!(Solution::count_digit_one(13), 5);
     }
 
     #[test]
