@@ -21,6 +21,7 @@ impl Solution1 {
         recipe_map: &HashMap<String, Vec<String>>,
         resolved_recipes: &mut HashSet<String>,
         unresolvable_recipes: &mut HashSet<String>,
+        // This field eliminate loops
         visited_recipes: &mut HashSet<String>,
     ) -> bool {
         if resolved_recipes.contains(recipe) {
