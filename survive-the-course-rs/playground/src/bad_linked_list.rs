@@ -1,5 +1,3 @@
-automod::dir!(pub "src/playground");
-
 #[derive(Debug)]
 enum List<T> {
     Cons(T, Box<List<T>>),

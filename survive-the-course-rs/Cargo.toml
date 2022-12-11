@@ -11,4 +11,4 @@ automod = '*'
 serde_json = "1.0"
 
 [workspace]
-members = ["test-util", "test-macro"]
+members = ["playground", "test-util", "test-macro"]
