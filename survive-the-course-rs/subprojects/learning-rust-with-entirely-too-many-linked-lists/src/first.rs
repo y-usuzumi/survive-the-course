@@ -121,6 +121,18 @@ pub mod better_list2 {
         }
     }
 
+    // Default Drop implementation for list is not tail call, and cannot be
+    // optimized (https://rust-unofficial.github.io/too-many-lists/first-drop.html).
+    // We need to write a manual while loop to avoid blowing the stack.
+    impl<T> Drop for List<T> {
+        fn drop(&mut self) {
+            let mut link = mem::replace(&mut self.head, Link::Empty);
+            while let Link::More(mut node) = link {
+                link = mem::replace(&mut node.next, Link::Empty);
+            }
+        }
+    }
+
     #[cfg(test)]
     mod tests {
         use super::*;
