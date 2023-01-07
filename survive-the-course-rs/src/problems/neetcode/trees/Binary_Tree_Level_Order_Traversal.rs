@@ -37,11 +37,11 @@ impl Solution {
             for node in curr_level {
                 let node_ref = node.borrow();
                 curr_level_vals.push(node_ref.val);
-                if node_ref.left.is_some() {
-                    next_level.push(node_ref.left.as_ref().unwrap().clone());
+                if let Some(ref node) = node_ref.left {
+                    next_level.push(node.clone());
                 }
-                if node_ref.right.is_some() {
-                    next_level.push(node_ref.right.as_ref().unwrap().clone());
+                if let Some(ref node) = node_ref.right {
+                    next_level.push(node.clone());
                 }
             }
 
