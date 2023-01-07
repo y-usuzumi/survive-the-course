@@ -35,6 +35,7 @@ pub mod _778_Swim_in_Rising_Water;
 pub mod _1293_Shortest_Path_in_a_Grid_with_Obstacles_Elimination;
 pub mod _138_Copy_List_with_Random_Pointer;
 pub mod _2050_Parallel_Courses_III;
+pub mod _2290_Minimum_Obstacle_Removal_to_Reach_Corner;
 pub mod _2_Add_Two_Numbers;
 pub mod _843_Guess_the_Word;
 pub mod _845_Longest_Mountain_in_Array;
