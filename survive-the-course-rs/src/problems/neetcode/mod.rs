@@ -1,1 +1,11 @@
-automod::dir!(pub "src/problems/neetcode");
+pub mod advanced_graphs;
+pub mod arrays_and_hashing;
+pub mod binary_search;
+pub mod greedy;
+pub mod heap_and_priority_queue;
+pub mod intervals;
+pub mod linked_list;
+pub mod sliding_window;
+pub mod stack;
+pub mod trees;
+pub mod two_pointers;
