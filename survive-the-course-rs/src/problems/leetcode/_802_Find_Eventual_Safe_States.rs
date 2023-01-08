@@ -18,9 +18,9 @@ impl Solution1 {
         let mut prereqs = vec![0; len];
 
         for (idx, children) in graph.iter().enumerate() {
+            prereqs[idx] = children.len();
             for child in children {
                 hm.get_mut(child).unwrap().push(idx as i32);
-                prereqs[idx] += 1;
             }
         }
 
