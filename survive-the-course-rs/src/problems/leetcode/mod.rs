@@ -37,6 +37,7 @@ pub mod _138_Copy_List_with_Random_Pointer;
 pub mod _2050_Parallel_Courses_III;
 pub mod _2290_Minimum_Obstacle_Removal_to_Reach_Corner;
 pub mod _2_Add_Two_Numbers;
+pub mod _310_Minimum_Height_Trees;
 pub mod _802_Find_Eventual_Safe_States;
 pub mod _843_Guess_the_Word;
 pub mod _845_Longest_Mountain_in_Array;
