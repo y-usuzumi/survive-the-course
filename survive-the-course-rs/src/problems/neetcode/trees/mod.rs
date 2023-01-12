@@ -3,6 +3,7 @@ pub mod Binary_Tree_Level_Order_Traversal;
 pub mod Binary_Tree_Right_Side_View;
 pub mod Diameter_of_Binary_Tree;
 pub mod Invert_Binary_Tree;
+pub mod Kth_Smallest_Element_in_a_BST;
 pub mod Lowest_Common_Ancestor_of_a_Binary_Search_Tree;
 pub mod Maximum_Depth_of_Binary_Tree;
 pub mod Same_Tree;
