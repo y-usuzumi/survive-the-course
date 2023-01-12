@@ -1,6 +1,7 @@
 pub mod Balanced_Binary_Tree;
 pub mod Binary_Tree_Level_Order_Traversal;
 pub mod Binary_Tree_Right_Side_View;
+pub mod Construct_Binary_Tree_from_Preorder_and_Inorder_Traversal;
 pub mod Diameter_of_Binary_Tree;
 pub mod Invert_Binary_Tree;
 pub mod Kth_Smallest_Element_in_a_BST;
