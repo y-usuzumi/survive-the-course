@@ -8,4 +8,5 @@ pub mod linked_list;
 pub mod sliding_window;
 pub mod stack;
 pub mod trees;
+pub mod tries;
 pub mod two_pointers;
