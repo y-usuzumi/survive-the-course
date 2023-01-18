@@ -1,5 +1,6 @@
 pub mod advanced_graphs;
 pub mod arrays_and_hashing;
+pub mod backtracking;
 pub mod binary_search;
 pub mod greedy;
 pub mod heap_and_priority_queue;
