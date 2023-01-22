@@ -40,6 +40,7 @@ pub mod _1930_Unique_Length_3_Palindromic_Subsequences;
 pub mod _1963_Minimum_Number_of_Swaps_to_Make_the_String_Balanced;
 pub mod _2002_Maximum_Product_of_the_Length_of_Two_Palindromic_Subsequences;
 pub mod _2050_Parallel_Courses_III;
+pub mod _2272_Substring_with_Largest_Variance;
 pub mod _2290_Minimum_Obstacle_Removal_to_Reach_Corner;
 pub mod _2537_Count_the_Number_of_Good_Subarrays;
 pub mod _2_Add_Two_Numbers;
