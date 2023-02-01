@@ -45,6 +45,7 @@ pub mod _2290_Minimum_Obstacle_Removal_to_Reach_Corner;
 pub mod _2537_Count_the_Number_of_Good_Subarrays;
 pub mod _2_Add_Two_Numbers;
 pub mod _310_Minimum_Height_Trees;
+pub mod _43_Multiply_Strings;
 pub mod _560_Subarray_Sum_Equals_K;
 pub mod _718_Maximum_Length_of_Repeated_Subarray;
 pub mod _802_Find_Eventual_Safe_States;
