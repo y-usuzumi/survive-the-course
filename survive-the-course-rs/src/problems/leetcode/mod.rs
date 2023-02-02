@@ -54,6 +54,7 @@ pub mod _718_Maximum_Length_of_Repeated_Subarray;
 pub mod _802_Find_Eventual_Safe_States;
 pub mod _843_Guess_the_Word;
 pub mod _845_Longest_Mountain_in_Array;
+pub mod _899_Orderly_Queue;
 pub mod _913_Cat_and_Mouse;
 pub mod _91_Decode_Ways;
 pub mod _974_Subarray_Sums_Divisible_by_K;
