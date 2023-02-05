@@ -53,6 +53,7 @@ pub mod _43_Multiply_Strings;
 pub mod _456_132_Pattern;
 pub mod _47_Permutations_II;
 pub mod _560_Subarray_Sum_Equals_K;
+pub mod _701_Insert_into_a_Binary_Search_Tree;
 pub mod _718_Maximum_Length_of_Repeated_Subarray;
 pub mod _802_Find_Eventual_Safe_States;
 pub mod _843_Guess_the_Word;
