@@ -49,6 +49,7 @@ pub mod _2_Add_Two_Numbers;
 pub mod _310_Minimum_Height_Trees;
 pub mod _402_Remove_K_Digits;
 pub mod _410_Split_Array_Largest_Sum;
+pub mod _438_Find_All_Anagrams_in_a_String;
 pub mod _43_Multiply_Strings;
 pub mod _44_Wildcard_Matching;
 pub mod _450_Delete_Node_in_a_BST;
