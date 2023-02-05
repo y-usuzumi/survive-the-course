@@ -54,6 +54,7 @@ pub mod _44_Wildcard_Matching;
 pub mod _450_Delete_Node_in_a_BST;
 pub mod _456_132_Pattern;
 pub mod _47_Permutations_II;
+pub mod _50_Pow_x_n;
 pub mod _560_Subarray_Sum_Equals_K;
 pub mod _701_Insert_into_a_Binary_Search_Tree;
 pub mod _718_Maximum_Length_of_Repeated_Subarray;
