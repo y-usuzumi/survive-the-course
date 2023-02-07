@@ -61,6 +61,7 @@ pub mod _57_Insert_Interval;
 pub mod _701_Insert_into_a_Binary_Search_Tree;
 pub mod _718_Maximum_Length_of_Repeated_Subarray;
 pub mod _802_Find_Eventual_Safe_States;
+pub mod _818_Race_Car;
 pub mod _843_Guess_the_Word;
 pub mod _845_Longest_Mountain_in_Array;
 pub mod _895_Maximum_Frequency_Stack;
